@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.1.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: G6WEhyEl2AJ5E2VI1nIZY74wMjN8fdEH2jyCOuK+tOvU7XxqmZwXJyuaQI552GarjFEhN7cie4sGuRp03HWD6Idnwi+4so/+yUp3bXRxgJM6Pv1yF/wZ2G3DrVLYjI/OuL9ieZ0I4lB8XaKmr0zfsvDT8YEA7M4ejeGUFL+U6Ek=
+  app: afternoon-meadow-5910
+  on:
+    repo: misa-takeba/rails_enpit
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
